@@ -2,7 +2,7 @@
 
 **Studious** is a student assistance web application designed to help students organize their academic workload and collaborate with peers. Its core functionality includes assignment and assessment tracking, timetable management, and group collaboration features.
 
-![Studious Screenshot](path/to/your/image.png)  
+![Studious Screenshot](demo/Studious%20-%20SignUp.jpeg)  
 *Screenshot of the Studious web interface.*
 
 ---

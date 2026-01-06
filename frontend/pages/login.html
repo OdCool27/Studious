@@ -5,71 +5,58 @@
   <title>Studious | Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="icon" href="/images/favicon.png" type="image/png">
+  <link rel="icon" href="../images/favicon.png">
   <link rel="stylesheet" href="../style/auth.css">
 </head>
 
-<body>
+<body class="page-login is-preload">
 
-  <main class="layout">
+<main class="layout">
 
-    <!-- Left side image (same as signup for consistency) -->
-    <section class="layout__left" aria-label="Students studying">
-      <img
-        class="layout__image"
-        src="../images/4.png"
-        alt="Students studying together"
-      >
-    </section>
+  <!-- Left image -->
+  <section class="layout__left" aria-label="Students studying">
+    <img class="layout__image" src="../images/4.png" alt="Students studying">
+  </section>
 
-    <!-- Right side auth -->
-    <section class="layout__right" aria-labelledby="auth-title">
+  <!-- Right side -->
+  <section class="layout__right">
+    <!-- REQUIRED wrapper for transition -->
+    <div class="auth-page">
 
-      <!-- Logo -->
       <header>
-        <img
-          src="../images/1.png"
-          alt="Studious logo"
-        >
+        <img src="../images/1.png" alt="Studious logo">
         <p>A Student’s Best Friend</p>
       </header>
 
-      <!-- Toggle -->
+      <!-- Slider toggle -->
       <nav class="auth-toggle" aria-label="Authentication mode">
+        <span class="auth-toggle__slider"></span>
+
         <a
-          class="auth-toggle__btn auth-toggle__btn--active"
-          href="/pages/login.html"
-          aria-current="page"
+          class="auth-toggle__btn"
+          href="login.html"
+          data-target="login"
         >Login</a>
 
-        <a class="auth-toggle__btn" href="../pages/register.html">Sign Up</a>
+        <a
+          class="auth-toggle__btn"
+          href="register.html"
+          data-target="signup"
+        >Sign Up</a>
       </nav>
 
-      <!-- Form -->
-      <h1 id="auth-title">Welcome back</h1>
+      <h1 class="auth-title">Welcome back</h1>
 
       <form class="auth-form" method="post" novalidate>
 
         <div class="field">
           <label for="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autocomplete="email"
-            required
-          >
+          <input id="email" type="email" autocomplete="email" required>
         </div>
 
         <div class="field">
           <label for="password">Password</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            autocomplete="current-password"
-            required
-          >
+          <input id="password" type="password" autocomplete="current-password" required>
         </div>
 
         <div class="auth-actions auth-actions--single">
@@ -79,16 +66,20 @@
       </form>
 
       <p class="auth-link">
-        <a href="/pages/forgot-password.html">Forgot My Password</a>
+        <a href="#">Forgot My Password</a>
       </p>
 
       <footer>
         <small>© 2026 Studious</small>
       </footer>
 
-    </section>
+    </div>
+  </section>
 
-  </main>
+</main>
+
+<!-- Transition script -->
+<script src="../scripts/auth-transition.js"></script>
 
 </body>
 </html>

@@ -5,61 +5,61 @@
   <title>Studious | Sign Up</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="icon" href="/images/favicon.png" type="image/png">
+  <link rel="icon" href="../images/favicon.png">
   <link rel="stylesheet" href="../style/auth.css">
 </head>
 
-<body>
+<body class="page-signup is-preload">
 
-  <main class="layout">
+<main class="layout">
 
-    <!-- Left side: image -->
-    <section class="layout__left" aria-label="Students studying">
-      <img
-        class="layout__image"
-        src="../images/4.png"
-        alt="Students studying together"
-      >
-    </section>
+  <!-- Left image -->
+  <section class="layout__left" aria-label="Students studying">
+    <img class="layout__image" src="../images/4.png" alt="Students studying">
+  </section>
 
-    <!-- Right side: auth -->
-    <section class="layout__right" aria-labelledby="auth-title">
+  <!-- Right side -->
+  <section class="layout__right">
+    <!-- THIS wrapper is required for the transition -->
+    <div class="auth-page">
 
-      <!-- Logo -->
       <header>
-        <img
-          src="../images/1.png"
-          alt="Studious logo"
-        >
+        <img src="../images/1.png" alt="Studious logo">
         <p>A Student’s Best Friend</p>
       </header>
 
-      <!-- Login / Sign Up toggle -->
+      <!-- Slider toggle -->
       <nav class="auth-toggle" aria-label="Authentication mode">
-        <a class="auth-toggle__btn" href="../pages/login.html">Login</a>
+        <span class="auth-toggle__slider"></span>
+
         <a
-          class="auth-toggle__btn auth-toggle__btn--active"
-          href="../pages/register.html"
-          aria-current="page"
+          class="auth-toggle__btn"
+          href="login.html"
+          data-target="login"
+        >Login</a>
+
+        <a
+          class="auth-toggle__btn"
+          href="register.html"
+          data-target="signup"
         >Sign Up</a>
       </nav>
 
-      <!-- Form -->
-      <h1 id="auth-title">Create your account</h1>
+      <h1 class="auth-title">Create your account</h1>
 
       <form class="auth-form" method="post" novalidate>
 
-        <fieldset>
+        <fieldset class="two-col">
           <legend>Personal information</legend>
 
           <div class="field">
             <label for="firstName">First name</label>
-            <input id="firstName" name="firstName" type="text" autocomplete="given-name" required>
+            <input id="firstName" type="text" autocomplete="given-name" required>
           </div>
 
           <div class="field">
             <label for="lastName">Last name</label>
-            <input id="lastName" name="lastName" type="text" autocomplete="family-name" required>
+            <input id="lastName" type="text" autocomplete="family-name" required>
           </div>
         </fieldset>
 
@@ -68,17 +68,17 @@
 
           <div class="field">
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
+            <input id="email" type="email" autocomplete="email" required>
           </div>
 
           <div class="field">
             <label for="password">Password</label>
-            <input id="password" name="password" type="password" autocomplete="new-password" required>
+            <input id="password" type="password" autocomplete="new-password" required>
           </div>
 
           <div class="field">
             <label for="confirmPassword">Re-enter password</label>
-            <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" required>
+            <input id="confirmPassword" type="password" required>
           </div>
         </fieldset>
 
@@ -87,12 +87,12 @@
 
           <div class="field">
             <label for="school">School / University</label>
-            <input id="school" name="school" type="text" required>
+            <input id="school" type="text" required>
           </div>
 
           <div class="field">
             <label for="course">Course of study</label>
-            <input id="course" name="course" type="text" required>
+            <input id="course" type="text" required>
           </div>
         </fieldset>
 
@@ -107,9 +107,13 @@
         <small>© 2026 Studious</small>
       </footer>
 
-    </section>
+    </div>
+  </section>
 
-  </main>
+</main>
+
+<!-- Transition script -->
+<script src="../scripts/auth-transition.js"></script>
 
 </body>
 </html>

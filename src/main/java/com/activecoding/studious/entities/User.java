@@ -1,33 +1,44 @@
-package com.activecoding.studious.user;
+package com.activecoding.studious.entities;
+import jakarta.persistence.*;
+
 import java.util.UUID;
 
-public class User {
+@Entity
+@Table(name="users")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name="role")
+public abstract class User {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.UUID)
     protected UUID id;
+
+    @Column(nullable=false)
     protected String firstName;
+
+    @Column(nullable=false)
     protected String lastName;
+
+    @Column(unique = true)
     protected String email;
+
+    @Column(nullable=false)
     protected String passwordHash;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", insertable = false, updatable = false)
     protected Role role;
 
-    public enum Role {STUDENT, ADMIN, OTHER}
+    public enum Role {STUDENT, ADMIN}
 
     //CONSTRUCTORS
-    public User(){
-        this.id = UUID.randomUUID();
-        this.firstName = "";
-        this.lastName = "";
-        this.email = "";
-        this.passwordHash = "";
-        this.role = Role.OTHER;
-    }
+    protected User(){}
 
-    public User(UUID id, String firstName, String lastName, String email, String passwordHash, Role role){
-        this.id = id;
+    public User( String firstName, String lastName, String email, String passwordHash){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.passwordHash = passwordHash;
-        this.role = role;
     }
 
     public User(User user){
@@ -39,13 +50,10 @@ public class User {
         this.role = user.role;
     }
 
+
     //ACCESSORS AND MUTATORS
     public UUID getId() {
         return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -84,14 +92,7 @@ public class User {
         return role;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
 
     @Override
     public String toString() {
@@ -105,3 +106,4 @@ public class User {
                 '}';
     }
 }
+

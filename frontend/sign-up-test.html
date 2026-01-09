@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="successMsg"></div>
+<h1>Sign Up</h1>
+<form id="myForm" action="placeholder.html" method="POST" style="display:flex; flex-direction:column;">
+    <label>
+        First Name
+        <input type="text" id="firstNameInput" placeholder="John" required>
+    </label>
+
+    <label>
+        Last Name
+        <input type="text" id="lastNameInput" placeholder="Doe" required>
+    </label>
+
+    <label>
+        Email
+        <input type="email" id="emailInput" placeholder="email@example.com" required>
+    </label>
+    <div id="emailError" class="error"></div>
+
+    <label>
+        Password
+        <input type="password" id="passwordInput" placeholder="Enter password" required>
+    </label>
+    <div id="passwordError" class="error"></div>
+
+    <label>
+        Password
+        <input type="password" id="confirmPasswordInput" placeholder="Re-enter password" required>
+    </label>
+
+    <label>
+        School/University
+        <select name="schoolInput" required>
+            <option disabled selected hidden>Select a School</option>
+            <option value="UTECH">University of Technology</option>
+            <option value="UWI">University of the West Indies</option>
+            <option value="CMU">Caribbean Maritime University</option>
+        </select>
+    </label>
+
+    <label>
+        Course of Study
+        <input type="text" name="courseInput" placeholder="BSc in Education" required>
+    </label>
+
+    <button type="reset">Clear</button>
+
+    <button type="submit">Submit</button>
+
+
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>

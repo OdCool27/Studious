@@ -1,53 +1,40 @@
-package com.activecoding.studious.module;
-import com.activecoding.studious.session.Session;
+package com.activecoding.studious.entities;
+import jakarta.persistence.*;
 
-import java.util.Arrays;
 import java.util.UUID;
 
-public class Module {
+@Entity
+@Table(name="modules")
+public class CourseModule {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID moduleID;
+
+    @Column(nullable = false, unique = true)
     private String moduleName;
+
+    @Column(nullable = false, unique = true)
     private String moduleCode;
+
     private String moduleDescription;
+
     private String lecturer;
-    private Session[] sessions;
 
 
     //Constructors
-    public Module(){
-        this.moduleID = UUID.randomUUID();
-        this.moduleName = UUID.randomUUID().toString();
-        this.moduleCode = UUID.randomUUID().toString();
-        this.moduleDescription = UUID.randomUUID().toString();
-        this.lecturer = UUID.randomUUID().toString();
-        this.sessions = null;
-    }
+    protected CourseModule(){}
 
-    public Module(UUID moduleID, String moduleName, String moduleCode, String moduleDescription, String lecturer){
-        this.moduleID = moduleID;
+    public CourseModule(String moduleName, String moduleCode, String moduleDescription, String lecturer){
         this.moduleName = moduleName;
         this.moduleCode = moduleCode;
         this.moduleDescription = moduleDescription;
         this.lecturer = lecturer;
-        this.sessions = null;
     }
 
-    public Module(Module module){
-        this.moduleID = module.moduleID;
-        this.moduleName = module.moduleName;
-        this.moduleCode = module.moduleCode;
-        this.moduleDescription = module.moduleDescription;
-        this.lecturer = module.lecturer;
-        this.sessions = module.sessions;
-    }
 
-    //Accessors and Mutators
+    // Accessors and Mutators
     public UUID getModuleID() {
         return moduleID;
-    }
-
-    public void setModuleID(UUID moduleID) {
-        this.moduleID = moduleID;
     }
 
     public String getModuleName() {
@@ -82,24 +69,16 @@ public class Module {
         this.lecturer = lecturer;
     }
 
-    public Session[] getSessions() {
-        return sessions;
-    }
-
-    public void setSessions(Session[] sessions) {
-        this.sessions = sessions;
-    }
-
     @Override
     public String toString() {
-        return "Module{" +
+        return "CourseModule{" +
                 "moduleID=" + moduleID +
                 ", moduleName='" + moduleName + '\'' +
                 ", moduleCode='" + moduleCode + '\'' +
                 ", moduleDescription='" + moduleDescription + '\'' +
                 ", lecturer='" + lecturer + '\'' +
-                ", sessions=" + Arrays.toString(sessions) +
                 '}';
     }
 }
+
 

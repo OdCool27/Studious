@@ -1,26 +1,38 @@
-package com.activecoding.studious.student;
+package com.activecoding.studious.entities;
 
-import com.activecoding.studious.user.User;
+import jakarta.persistence.*;
 
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Student extends User{
+@Entity
+@Table(name = "students")
+@DiscriminatorValue("STUDENT")
+public class Student extends User {
+
+    //Accessors and Mutators
+    @Column(nullable=false)
     private String school;
+
+    @Column(nullable=false)
     private String course;
-    private Module[] timetable;
+
+    @ManyToMany
+    @JoinTable(
+            name = "timetable",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "session_id")
+    )
+    private Set<Session> timetable = new HashSet<>();
 
     //Constructors
-    public Student(){
+    protected Student(){
         super();
-        setRole(Role.STUDENT);
-        school = "";
-        course = "";
-        timetable = null;
     }
 
-    public Student(User user, String school, String course, Module[] timetable){
-        super(user);
-        setRole(Role.STUDENT);
+    public Student(String firstName, String lastName, String email, String passwordHash, String school, String course, Set<Session> timetable){
+        super(firstName, lastName, email, passwordHash);
+        //setRole(Role.STUDENT);
         this.school = school;
         this.course = course;
         this.timetable = timetable;
@@ -28,17 +40,15 @@ public class Student extends User{
 
     public Student(Student student){
         super(student);
-        setRole(Role.STUDENT);
+        //setRole(Role.STUDENT);
         this.school = student.school;
         this.course = student.course;
         this.timetable = student.timetable;
     }
 
-    //Accessors and Mutators
     public String getSchool() {
         return school;
     }
-
     public void setSchool(String school) {
         this.school = school;
     }
@@ -51,14 +61,13 @@ public class Student extends User{
         this.course = course;
     }
 
-    public Module[] getTimetable() {
+    public Set<Session> getTimetable() {
         return timetable;
     }
 
-    public void setTimetable(Module[] timetable) {
+    public void setTimetable(Set<Session> timetable) {
         this.timetable = timetable;
     }
-
 
     @Override
     public String toString() {
@@ -71,7 +80,6 @@ public class Student extends User{
                 ", role=" + role +
                 ", school='" + school + '\'' +
                 ", course='" + course + '\'' +
-                ", timetable=" + Arrays.toString(timetable) +
                 '}';
     }
 }

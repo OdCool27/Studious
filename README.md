@@ -12,7 +12,7 @@
 ### Academic Organization
 - Register with name, email, and school/university.
 - Select modules/subjects from a predefined list.
-- Recreate your semester timetable with module sessions and locations.
+- Recreate your semester timetable with courseModule sessions and locations.
 - Add and manage assignments and upcoming assessments.
 - View assignments and exams in a calendar format.
 - Receive automated email reminders for deadlines.
@@ -41,7 +41,7 @@
 - Group creation, joining, and management.
 - In-app chat and document sharing for groups.
 - Syncing group events to all members’ calendars.
-- Admin features for module and user management.
+- Admin features for courseModule and user management.
 - Extensible architecture for future features like video calls and enhanced analytics.
 
 ---
@@ -70,7 +70,7 @@
 - Participate in groups with chat, document sharing, and event management.
 
 ### Admin (Optional / Future)
-- Manage module list and student accounts.
+- Manage courseModule list and student accounts.
 - Oversee system usage and ensure data integrity.
 
 ---

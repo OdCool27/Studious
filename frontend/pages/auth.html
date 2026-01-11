@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Studious | Auth</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" href="../images/favicon.png">
+  <link rel="stylesheet" href="../style/auth.css">
+</head>
+
+<body>
+
+<main class="layout">
+
+  <!-- Left image -->
+  <section class="layout__left">
+    <img class="layout__image" src="../images/4.png" alt="Students studying">
+  </section>
+
+  <!-- Right -->
+  <section class="layout__right">
+
+    <header>
+      <img src="../images/1.png" alt="Studious logo">
+      <p>A Student’s Best Friend</p>
+    </header>
+
+    <!-- Slider toggle -->
+    <nav class="auth-toggle">
+      <span class="auth-toggle__slider"></span>
+      <button class="auth-toggle__btn is-active" data-mode="login">Login</button>
+      <button class="auth-toggle__btn" data-mode="signup">Sign Up</button>
+    </nav>
+
+    <!-- Forms container -->
+    <section class="auth-forms">
+
+      <!-- LOGIN -->
+      <form class="auth-form auth-form--login is-active">
+        <h1 class="auth-title">Welcome back</h1>
+
+        <div class="field">
+          <label>Email</label>
+          <input type="email" required>
+        </div>
+
+        <div class="field">
+          <label>Password</label>
+          <input type="password" required>
+        </div>
+
+        <div class="auth-actions auth-actions--single">
+          <button class="btn btn--primary">Login</button>
+        </div>
+
+        <p class="auth-link">
+          <a href="#">Forgot My Password</a>
+        </p>
+      </form>
+
+      <!-- SIGN UP (THIS WAS MISSING) -->
+      <form class="auth-form auth-form--signup">
+
+        <h1 class="auth-title">Create your account</h1>
+
+        <fieldset class="two-col">
+          <legend>Personal information</legend>
+
+          <div class="field">
+            <label>First name</label>
+            <input type="text" required>
+          </div>
+
+          <div class="field">
+            <label>Last name</label>
+            <input type="text" required>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Account details</legend>
+
+          <div class="field">
+            <label>Email</label>
+            <input type="email" required>
+          </div>
+
+          <div class="field">
+            <label>Password</label>
+            <input type="password" required>
+          </div>
+
+          <div class="field">
+            <label>Re-enter password</label>
+            <input type="password" required>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Academic information</legend>
+
+          <div class="field">
+            <label>School / University</label>
+            <input type="text" required>
+          </div>
+
+          <div class="field">
+            <label>Course of study</label>
+            <input type="text" required>
+          </div>
+        </fieldset>
+
+        <div class="auth-actions">
+          <button class="btn btn--ghost" type="reset">Clear</button>
+          <button class="btn btn--primary" type="submit">Register</button>
+        </div>
+
+      </form>
+
+    </section>
+
+  </section>
+</main>
+
+<script src="../scripts/auth-toggle.js"></script>
+</body>
+</html>

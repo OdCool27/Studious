@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Studious | Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" href="../images/favicon.png">
+  <link rel="stylesheet" href="../style/auth.css">
+</head>
+
+<body class="page-login is-preload">
+
+<main class="layout">
+
+  <!-- Left image -->
+  <section class="layout__left" aria-label="Students studying">
+    <img class="layout__image" src="../images/4.png" alt="Students studying">
+  </section>
+
+  <!-- Right side -->
+  <section class="layout__right">
+    <!-- REQUIRED wrapper for transition -->
+    <div class="auth-page">
+
+      <header>
+        <img src="../images/1.png" alt="Studious logo">
+        <p>A Student’s Best Friend</p>
+      </header>
+
+      <!-- Slider toggle -->
+      <nav class="auth-toggle" aria-label="Authentication mode">
+        <span class="auth-toggle__slider"></span>
+
+        <a
+          class="auth-toggle__btn"
+          href="login.html"
+          data-target="login"
+        >Login</a>
+
+        <a
+          class="auth-toggle__btn"
+          href="register.html"
+          data-target="signup"
+        >Sign Up</a>
+      </nav>
+
+      <h1 class="auth-title">Welcome back</h1>
+
+      <form class="auth-form" method="post" novalidate>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="current-password" required>
+        </div>
+
+        <div class="auth-actions auth-actions--single">
+          <button class="btn btn--primary" type="submit">Login</button>
+        </div>
+
+      </form>
+
+      <p class="auth-link">
+        <a href="#">Forgot My Password</a>
+      </p>
+
+      <footer>
+        <small>© 2026 Studious</small>
+      </footer>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Transition script -->
+<script src="../scripts/auth-transition.js"></script>
+
+</body>
+</html>

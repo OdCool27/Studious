@@ -62,3 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
+
+
+//FORM FUNCTIONS
+//document.getElementById("")

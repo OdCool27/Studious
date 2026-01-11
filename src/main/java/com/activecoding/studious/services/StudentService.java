@@ -1,5 +1,7 @@
 package com.activecoding.studious.services;
 
+import com.activecoding.studious.dto.StudentLoginRequest;
+import com.activecoding.studious.dto.StudentRegisterRequest;
 import com.activecoding.studious.entities.Session;
 import com.activecoding.studious.entities.Student;
 import com.activecoding.studious.repositories.StudentRepository;
@@ -20,6 +22,15 @@ public class StudentService {
         this.passwordEncoder = passwordEncoder;
     }
 
+
+    //CONVERTS A REQUEST DTO TO A STUDENT OBJECT FOR PERSISTENCE
+    public Student convertRequest(StudentRegisterRequest request) {
+        return new Student(request.getFirstName(), request.getLastName(), request.getEmail(), request.getPassword(),
+                request.getSchool(), request.getCourse(), new HashSet<>());
+    }
+
+
+
     public List<Student> findAllStudents() {
         return studentRepository.findAll();
     }
@@ -28,28 +39,35 @@ public class StudentService {
         return studentRepository.findById(id);
     }
 
-    public Student registerStudent(Student student){
-        if(studentRepository.existsByEmail(student.getEmail())){
+
+
+    public Student registerStudent(StudentRegisterRequest request){
+        if(studentRepository.existsByEmail(request.getEmail())){
             throw new RuntimeException("Email already exists");
         }
 
-        // Hash password
-        String hashedPassword = passwordEncoder.encode(student.getPasswordHash());
-        student.setPasswordHash(hashedPassword);
+        var student = convertRequest(request);//Converts a request into a student entity
+        student.setPasswordHash(passwordEncoder.encode(student.getPasswordHash()));//Encodes password and stores hash
 
         return studentRepository.save(student);
     }
 
-    public Student loginStudent(String email, String password){
 
-        Student student =  studentRepository.findByEmail(email).orElseThrow(()-> new RuntimeException("Email or Password Invalid"));
 
-        if(!passwordEncoder.matches(password,student.getPasswordHash())){
+
+    public Student loginStudent(StudentLoginRequest request){
+
+        Student student =  studentRepository.findByEmail(request.getEmail()).orElseThrow(()-> new RuntimeException("Email or Password Invalid"));
+
+        if(!passwordEncoder.matches(request.getPassword(),student.getPasswordHash())){
             throw new RuntimeException("Email or Password Invalid");
         }
 
         return student;
     }
+
+
+
 
     public Student updateStudent(UUID id, Student studentDetails){
         Student student = studentRepository.findById(id).orElseThrow(()-> new RuntimeException("Student not found"));

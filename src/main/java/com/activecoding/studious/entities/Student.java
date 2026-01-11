@@ -1,5 +1,7 @@
 package com.activecoding.studious.entities;
 
+import com.activecoding.studious.dto.StudentRegisterRequest;
+import com.activecoding.studious.dto.StudentResponse;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -46,9 +48,11 @@ public class Student extends User {
         this.timetable = student.timetable;
     }
 
+
     public String getSchool() {
         return school;
     }
+
     public void setSchool(String school) {
         this.school = school;
     }
@@ -69,17 +73,4 @@ public class Student extends User {
         this.timetable = timetable;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", passwordHash='" + passwordHash + '\'' +
-                ", role=" + role +
-                ", school='" + school + '\'' +
-                ", course='" + course + '\'' +
-                '}';
-    }
 }

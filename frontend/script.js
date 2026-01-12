@@ -58,11 +58,34 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       // Success
       document.getElementById("successMsg").textContent = "Form submitted successfully!";
-      form.submit(); // uncomment to actually submit
+      //form.submit(); // uncomment to actually submit
     }
   });
 });
 
 
 //FORM FUNCTIONS
-//document.getElementById("")
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault();//prevent reloading of page
+
+  const loginRequest = {
+    "email": document.getElementById("emailInput").value.trim(),
+    "password": document.getElementById("passwordInput").value.trim(),
+  }
+
+  fetch("http://localhost:8080/students/login",{
+    method: "POST",
+    headers:{
+      "Content-Type": "application/json"
+    },
+    body:JSON.stringify(loginRequest)
+  }).then(response => response.json())
+  .then(data => {
+    document.body.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+  }).catch(error => {
+        console.log(error);
+        document.body.innerHTML = "Error";
+      });
+
+
+})

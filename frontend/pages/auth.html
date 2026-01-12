@@ -37,21 +37,21 @@
     <section class="auth-forms">
 
       <!-- LOGIN -->
-      <form class="auth-form auth-form--login is-active">
+      <form id="loginForm" class="auth-form auth-form--login is-active">
         <h1 class="auth-title">Welcome back</h1>
 
         <div class="field">
           <label>Email</label>
-          <input type="email" required>
+          <input id="emailInput" type="email" required>
         </div>
 
         <div class="field">
           <label>Password</label>
-          <input type="password" required>
+          <input id="passwordInput" type="password" required>
         </div>
 
         <div class="auth-actions auth-actions--single">
-          <button class="btn btn--primary">Login</button>
+          <button type="submit" class="btn btn--primary">Login</button>
         </div>
 
         <p class="auth-link">
@@ -60,7 +60,7 @@
       </form>
 
       <!-- SIGN UP (THIS WAS MISSING) -->
-      <form class="auth-form auth-form--signup">
+      <form id="signUpForm" class="auth-form auth-form--signup">
 
         <h1 class="auth-title">Create your account</h1>
 
@@ -124,5 +124,6 @@
 </main>
 
 <script src="../scripts/auth-toggle.js"></script>
+<script src="../script.js"></script>
 </body>
 </html>

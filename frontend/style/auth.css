@@ -123,9 +123,10 @@ header p{
 .auth-forms{
   position:relative;
   width:100%;
-  min-height:400px; /* prevents layout jump */
-  padding-bottom:80px;
+  min-height:640px; /* enough room for signup */
+  padding-bottom:120px; /* space for footer */
 }
+
 
 /* Base form */
 .auth-form{
@@ -275,12 +276,14 @@ legend{
 
 footer{
   position:relative;
-  margin-top:32px;
-  padding:24px 0 12px;
+  margin-top:40px;
+  padding:20px 0;
   text-align:center;
   font-size:12px;
   color:#8a8a8a;
 }
+
+
 
 
 

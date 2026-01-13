@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Studious | Auth</title>
+  <title>Studious | Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="icon" href="../images/favicon.png">
@@ -38,16 +38,25 @@
 
       <!-- LOGIN -->
       <form id="loginForm" class="auth-form auth-form--login is-active">
+
         <h1 class="auth-title">Welcome back</h1>
 
         <div class="field">
-          <label>Email</label>
-          <input id="emailInput" type="email" required>
+          <input
+            id="emailInput"
+            type="email"
+            placeholder="Email"
+            required
+          >
         </div>
 
         <div class="field">
-          <label>Password</label>
-          <input id="passwordInput" type="password" required>
+          <input
+            id="passwordInput"
+            type="password"
+            placeholder="Password"
+            required
+          >
         </div>
 
         <div class="auth-actions auth-actions--single">
@@ -55,11 +64,11 @@
         </div>
 
         <p class="auth-link">
-          <a href="#">Forgot My Password</a>
+          <a href="#">Forgot my password</a>
         </p>
       </form>
 
-      <!-- SIGN UP (THIS WAS MISSING) -->
+      <!-- SIGN UP -->
       <form id="signUpForm" class="auth-form auth-form--signup">
 
         <h1 class="auth-title">Create your account</h1>
@@ -68,13 +77,19 @@
           <legend>Personal information</legend>
 
           <div class="field">
-            <label>First name</label>
-            <input type="text" required>
+            <input
+              type="text"
+              placeholder="First name"
+              required
+            >
           </div>
 
           <div class="field">
-            <label>Last name</label>
-            <input type="text" required>
+            <input
+              type="text"
+              placeholder="Last name"
+              required
+            >
           </div>
         </fieldset>
 
@@ -82,18 +97,27 @@
           <legend>Account details</legend>
 
           <div class="field">
-            <label>Email</label>
-            <input type="email" required>
+            <input
+              type="email"
+              placeholder="Email"
+              required
+            >
           </div>
 
           <div class="field">
-            <label>Password</label>
-            <input type="password" required>
+            <input
+              type="password"
+              placeholder="Password"
+              required
+            >
           </div>
 
           <div class="field">
-            <label>Re-enter password</label>
-            <input type="password" required>
+            <input
+              type="password"
+              placeholder="Re-enter password"
+              required
+            >
           </div>
         </fieldset>
 
@@ -101,13 +125,19 @@
           <legend>Academic information</legend>
 
           <div class="field">
-            <label>School / University</label>
-            <input type="text" required>
+            <input
+              type="text"
+              placeholder="School / University"
+              required
+            >
           </div>
 
           <div class="field">
-            <label>Course of study</label>
-            <input type="text" required>
+            <input
+              type="text"
+              placeholder="Course of study"
+              required
+            >
           </div>
         </fieldset>
 
@@ -119,6 +149,9 @@
       </form>
 
     </section>
+    <footer>
+      <small>© 2026 Copyright Studious</small>
+    </footer>  
 
   </section>
 </main>

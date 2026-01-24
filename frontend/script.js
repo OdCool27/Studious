@@ -65,27 +65,33 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 //FORM FUNCTIONS
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-  event.preventDefault();//prevent reloading of page
+document.getElementById("loginForm").addEventListener("submit", async function (event) {
+  event.preventDefault();
 
   const loginRequest = {
-    "email": document.getElementById("emailInput").value.trim(),
-    "password": document.getElementById("passwordInput").value.trim(),
+    email: document.getElementById("emailInput").value.trim(),
+    password: document.getElementById("passwordInput").value.trim()
+  };
+
+  try {
+    const response = await fetch("http://localhost:8080/students/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include", // 🔑 IMPORTANT for cookies
+      body: JSON.stringify(loginRequest)
+    });
+
+    if (!response.ok) {
+      throw new Error("Invalid credentials");
+    }
+
+    // ✅ Login succeeded — move to dashboard
+    window.location.replace("/assignments.html"); // or dashboard.html
+
+  } catch (error) {
+    console.error(error);
+    alert("Login failed");
   }
-
-  fetch("http://localhost:8080/students/login",{
-    method: "POST",
-    headers:{
-      "Content-Type": "application/json"
-    },
-    body:JSON.stringify(loginRequest)
-  }).then(response => response.json())
-  .then(data => {
-    document.body.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
-  }).catch(error => {
-        console.log(error);
-        document.body.innerHTML = "Error";
-      });
-
-
-})
+});

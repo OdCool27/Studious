@@ -87,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const errors = validateForm(email, password, confirmPassword);
 
     form.querySelectorAll(".error-msg").forEach(el => el.textContent = "");
-    form.querySelector(".success-msg")?.textContent = "";
 
     if (errors.length > 0) {
       errors.forEach(err => {

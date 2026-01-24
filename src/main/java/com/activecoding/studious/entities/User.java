@@ -29,16 +29,20 @@ public abstract class User {
     @Column(name = "role", insertable = false, updatable = false)
     protected Role role;
 
+    @Column(name= "profilePicURL")
+    protected String profilePicURL;
+
     public enum Role {STUDENT, ADMIN}
 
     //CONSTRUCTORS
     protected User(){}
 
-    public User( String firstName, String lastName, String email, String passwordHash){
+    public User( String firstName, String lastName, String email, String passwordHash, String profilePicURL){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.passwordHash = passwordHash;
+        this.profilePicURL = profilePicURL;
     }
 
     public User(User user){
@@ -48,6 +52,7 @@ public abstract class User {
         this.email = user.email;
         this.passwordHash = user.passwordHash;
         this.role = user.role;
+        this.profilePicURL = user.profilePicURL;
     }
 
 
@@ -90,6 +95,14 @@ public abstract class User {
 
     public Role getRole() {
         return role;
+    }
+
+    public String getProfilePicURL() {
+        return profilePicURL;
+    }
+
+    public void setProfilePicURL(String profilePicURL) {
+        this.profilePicURL = profilePicURL;
     }
 
 

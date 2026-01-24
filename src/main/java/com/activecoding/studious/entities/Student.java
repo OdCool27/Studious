@@ -32,8 +32,8 @@ public class Student extends User {
         super();
     }
 
-    public Student(String firstName, String lastName, String email, String passwordHash, String school, String course, Set<Session> timetable){
-        super(firstName, lastName, email, passwordHash);
+    public Student(String firstName, String lastName, String email, String passwordHash, String profilePicURL, String school,  String course, Set<Session> timetable){
+        super(firstName, lastName, email, passwordHash, profilePicURL);
         //setRole(Role.STUDENT);
         this.school = school;
         this.course = course;

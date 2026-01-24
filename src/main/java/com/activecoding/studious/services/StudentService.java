@@ -26,7 +26,7 @@ public class StudentService {
     //CONVERTS A REQUEST DTO TO A STUDENT OBJECT FOR PERSISTENCE
     public Student convertRequest(StudentRegisterRequest request) {
         return new Student(request.getFirstName(), request.getLastName(), request.getEmail(), request.getPassword(),
-                request.getSchool(), request.getCourse(), new HashSet<>());
+                "", request.getSchool(), request.getCourse(), new HashSet<>());
     }
 
 
@@ -75,6 +75,7 @@ public class StudentService {
         student.setFirstName(studentDetails.getFirstName());
         student.setLastName(studentDetails.getLastName());
         student.setEmail(studentDetails.getEmail());
+        student.setProfilePicURL(studentDetails.getProfilePicURL());
 
         // Hash password
         String hashedPassword = passwordEncoder.encode(studentDetails.getPasswordHash());

@@ -6,6 +6,7 @@ public class StudentResponse {
     private String firstName;
     private String lastName;
     private String email;
+    private String profilePicURL;
     private String school;
     private String course;
     private String status;
@@ -16,6 +17,7 @@ public class StudentResponse {
         this.email = student.getEmail();
         this.school = student.getSchool();
         this.course = student.getCourse();
+        this.profilePicURL = student.getProfilePicURL();
         this.status = "success";
     }
 
@@ -41,5 +43,9 @@ public class StudentResponse {
 
     public String getStatus() {
         return status;
+    }
+
+    public String getProfilePicURL() {
+        return profilePicURL;
     }
 }

@@ -2,9 +2,11 @@ package com.activecoding.studious.services;
 
 import com.activecoding.studious.dto.StudentLoginRequest;
 import com.activecoding.studious.dto.StudentRegisterRequest;
+import com.activecoding.studious.dto.StudentResponse;
 import com.activecoding.studious.entities.Session;
 import com.activecoding.studious.entities.Student;
 import com.activecoding.studious.repositories.StudentRepository;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -39,7 +41,13 @@ public class StudentService {
         return studentRepository.findById(id);
     }
 
-
+    public StudentResponse getStudentByEmail(String email){
+        Student student = studentRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException(
+                        "Student not found for email: " + email
+                ));
+        return new StudentResponse(student);
+    }
 
     public Student registerStudent(StudentRegisterRequest request){
         if(studentRepository.existsByEmail(request.getEmail())){

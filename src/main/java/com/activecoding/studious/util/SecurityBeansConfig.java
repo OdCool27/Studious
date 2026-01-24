@@ -20,15 +20,33 @@ public class SecurityBeansConfig {
         return new BCryptPasswordEncoder();
     }
 
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                // CSRF (disable ONLY if you know why)
                 .csrf(csrf -> csrf.disable())
-                .cors(cors -> {
-                }) // ✅ enable CORS with default config
+
+                // CORS
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+
+                // Authorization rules
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll()
+                        .requestMatchers("/auth", "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/student_dashboard").authenticated()
+                        .anyRequest().authenticated()
+                )
+
+                // Form login
+                .formLogin(form -> form
+                        .loginPage("/auth")
+                        .defaultSuccessUrl("/student_dashboard", true)
+                        .permitAll()
+                )
+
+                // Logout (good practice)
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/auth?logout")
+                        .permitAll()
                 );
 
         return http.build();
@@ -39,9 +57,7 @@ public class SecurityBeansConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         config.setAllowedOrigins(List.of("http://localhost:63342"));
-        config.setAllowedMethods(List.of(
-                "GET", "POST", "PUT", "DELETE", "OPTIONS"
-        ));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
 
@@ -51,5 +67,4 @@ public class SecurityBeansConfig {
 
         return source;
     }
-
 }

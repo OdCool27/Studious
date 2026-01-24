@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Studious | Auth</title>
+  <title>Studious | Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="icon" href="../images/favicon.png">
@@ -15,15 +15,15 @@
 
   <!-- Left image -->
   <section class="layout__left">
-    <img class="layout__image" src="../images/4.png" alt="Students studying">
+    <img class="layout__image" src="../images/4.jpg" alt="Students studying">
   </section>
 
   <!-- Right -->
   <section class="layout__right">
 
     <header>
-      <img src="../images/1.png" alt="Studious logo">
-      <p>A Student’s Best Friend</p>
+      <img src="../images/2.png" alt="Studious logo">
+      <p style="font-size:16px; letter-spacing: 4px;">A Student’s Best Friend</p>
     </header>
 
     <!-- Slider toggle -->
@@ -37,44 +37,55 @@
     <section class="auth-forms">
 
       <!-- LOGIN -->
-      <form class="auth-form auth-form--login is-active">
-        <h1 class="auth-title">Welcome back</h1>
-
+      <form id="loginForm" class="auth-form auth-form--login is-active">
+        <legend>Login Credentials</legend>
         <div class="field">
-          <label>Email</label>
-          <input type="email" required>
+          <input
+            id="emailInput"
+            type="email"
+            placeholder="Email"
+            required
+          >
         </div>
 
         <div class="field">
-          <label>Password</label>
-          <input type="password" required>
+          <input
+            id="passwordInput"
+            type="password"
+            placeholder="Password"
+            required
+          >
         </div>
 
         <div class="auth-actions auth-actions--single">
-          <button class="btn btn--primary">Login</button>
+          <button type="submit" class="btn btn--primary">Login</button>
         </div>
 
         <p class="auth-link">
-          <a href="#">Forgot My Password</a>
+          <a href="#">Forgot my password</a>
         </p>
       </form>
 
-      <!-- SIGN UP (THIS WAS MISSING) -->
-      <form class="auth-form auth-form--signup">
-
-        <h1 class="auth-title">Create your account</h1>
+      <!-- SIGN UP -->
+      <form id="signUpForm" class="auth-form auth-form--signup">
 
         <fieldset class="two-col">
           <legend>Personal information</legend>
 
           <div class="field">
-            <label>First name</label>
-            <input type="text" required>
+            <input
+              type="text"
+              placeholder="First name"
+              required
+            >
           </div>
 
           <div class="field">
-            <label>Last name</label>
-            <input type="text" required>
+            <input
+              type="text"
+              placeholder="Last name"
+              required
+            >
           </div>
         </fieldset>
 
@@ -82,18 +93,27 @@
           <legend>Account details</legend>
 
           <div class="field">
-            <label>Email</label>
-            <input type="email" required>
+            <input
+              type="email"
+              placeholder="Email"
+              required
+            >
           </div>
 
           <div class="field">
-            <label>Password</label>
-            <input type="password" required>
+            <input
+              type="password"
+              placeholder="Password"
+              required
+            >
           </div>
 
           <div class="field">
-            <label>Re-enter password</label>
-            <input type="password" required>
+            <input
+              type="password"
+              placeholder="Re-enter password"
+              required
+            >
           </div>
         </fieldset>
 
@@ -101,13 +121,19 @@
           <legend>Academic information</legend>
 
           <div class="field">
-            <label>School / University</label>
-            <input type="text" required>
+            <input
+              type="text"
+              placeholder="School / University"
+              required
+            >
           </div>
 
           <div class="field">
-            <label>Course of study</label>
-            <input type="text" required>
+            <input
+              type="text"
+              placeholder="Course of study"
+              required
+            >
           </div>
         </fieldset>
 
@@ -119,10 +145,14 @@
       </form>
 
     </section>
+    <footer>
+      <small>© 2026 Copyright Studious</small>
+    </footer>  
 
   </section>
 </main>
 
 <script src="../scripts/auth-toggle.js"></script>
+<script src="../script.js"></script>
 </body>
 </html>

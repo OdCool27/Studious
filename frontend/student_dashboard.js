@@ -1,4 +1,4 @@
-(async function () {
+/*(async function () {
     try {
         const res = await fetch("http://localhost:8080/students/me", {
             credentials: "include"
@@ -35,5 +35,5 @@ async function loadAssignments() {
     }
 
     const assignments = await res.json();
-    /*renderAssignments(assignments);*/
-}
+
+}*/

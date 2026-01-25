@@ -31,21 +31,24 @@ public class SecurityBeansConfig {
 
                 // Authorization rules
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth", "/css/**", "/js/**").permitAll()
-                        .requestMatchers("/student_dashboard").authenticated()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/static/**", "/login", "/login/**", "/images/**", "/js/**", "/css/**").permitAll() // public paths
+                        .requestMatchers("/student_dashboard/**").authenticated()          // protected dashboard
+                        .anyRequest().authenticated()                                       // everything else
                 )
+
 
                 // Form login
                 .formLogin(form -> form
-                        .loginPage("/auth")
+                        .loginPage("/login")
+                        .usernameParameter("email") // default is 'username', set to your form input name
+                        .passwordParameter("password")
                         .defaultSuccessUrl("/student_dashboard", true)
                         .permitAll()
                 )
 
                 // Logout (good practice)
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/auth?logout")
+                        .logoutSuccessUrl("/login?logout")
                         .permitAll()
                 );
 

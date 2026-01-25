@@ -5,6 +5,7 @@ import com.activecoding.studious.dto.StudentRegisterRequest;
 import com.activecoding.studious.dto.StudentResponse;
 import com.activecoding.studious.entities.Student;
 import com.activecoding.studious.services.StudentService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,5 +54,17 @@ public class StudentController {
                     Map.of("status", "fail",  "message", e.getMessage())
             );
         }
+    }
+
+
+    @GetMapping("/me")
+    public ResponseEntity<Student> getCurrentStudent(HttpSession session) {
+        Student student = (Student) session.getAttribute("student");
+
+        if (student == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        return ResponseEntity.ok(student);
     }
 }

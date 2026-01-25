@@ -1,13 +1,19 @@
 package com.activecoding.studious.entities;
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name="users")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name="role")
-public abstract class User {
+public abstract class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy= GenerationType.UUID)
@@ -105,18 +111,41 @@ public abstract class User {
         this.profilePicURL = profilePicURL;
     }
 
-
+    //
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Give every student the STUDENT role
+        return List.of();
+    }
 
     @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", passwordHash='" + passwordHash + '\'' +
-                ", role=" + role +
-                '}';
+    public String getPassword() {
+        return getPasswordHash(); // or whatever your User stores the hashed password in
+    }
+
+    @Override
+    public String getUsername() {
+        return getEmail(); // email is used as username
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true; // or a field from User if you want
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true; // or a field from User
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
 

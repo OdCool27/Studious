@@ -3,14 +3,20 @@ package com.activecoding.studious.entities;
 import com.activecoding.studious.dto.StudentRegisterRequest;
 import com.activecoding.studious.dto.StudentResponse;
 import jakarta.persistence.*;
+import org.jspecify.annotations.Nullable;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "students")
 @DiscriminatorValue("STUDENT")
-public class Student extends User {
+public class Student extends User implements UserDetails {
 
     //Accessors and Mutators
     @Column(nullable=false)
@@ -71,6 +77,12 @@ public class Student extends User {
 
     public void setTimetable(Set<Session> timetable) {
         this.timetable = timetable;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Give every student the STUDENT role
+        return List.of(new SimpleGrantedAuthority("ROLE_STUDENT"));
     }
 
 }

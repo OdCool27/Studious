@@ -133,7 +133,8 @@ nav .icon img{
     width: 100%;
 }
 
-.task-table tr:nth-child(1){
+.task-table thead{
+    height: 25px;
     background: var(--dark-blue);
     color: white;
 }

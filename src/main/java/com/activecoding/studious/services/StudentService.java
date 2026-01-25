@@ -6,6 +6,8 @@ import com.activecoding.studious.dto.StudentResponse;
 import com.activecoding.studious.entities.Session;
 import com.activecoding.studious.entities.Student;
 import com.activecoding.studious.repositories.StudentRepository;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,7 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class StudentService {
+public class StudentService implements UserDetailsService {
 
     private final StudentRepository studentRepository;
     private final PasswordEncoder passwordEncoder;
@@ -22,6 +24,14 @@ public class StudentService {
     public StudentService(StudentRepository studentRepository,  PasswordEncoder passwordEncoder) {
         this.studentRepository = studentRepository;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    //USER DETAILS SERVICE
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Student student = studentRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Student not found for email: " + email));
+        return student; // Student implements UserDetails
     }
 
 

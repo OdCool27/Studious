@@ -1,39 +1,39 @@
-/*(async function () {
-    try {
-        const res = await fetch("http://localhost:8080/students/me", {
-            credentials: "include"
-        });
+/*=================================================
+        CHANGE VIEWS - NAVIGATION
+====================================================*/
 
-        if (res.status === 401) {
-            window.location.replace("/auth.html");
-            return;
-        }
+const options = document.querySelectorAll('.icon');
+const views = document.querySelectorAll('.view'); // all views share this class
 
-        const student = await res.json();
+options.forEach((icon, index) => {
+    icon.addEventListener('click', () => {
 
-        // Populate UI
-        document.getElementById("studentName").textContent =
-            student.firstName + " " + student.lastName;
+        // icon active state
+        options.forEach(i => i.classList.remove('active'));
+        icon.classList.add('active');
 
-        loadAssignments();
-
-    } catch (err) {
-        console.error(err);
-        window.location.replace("/login.html");
-    }
-})();
-
-
-async function loadAssignments() {
-    const res = await fetch("http://localhost:8080/assignments", {
-        credentials: "include"
+        // view visibility
+        views.forEach(v => v.style.display = 'none');
+        views[index].style.display = 'block';
     });
+});
 
-    if (res.status === 401) {
-        window.location.replace("/login.html");
-        return;
-    }
 
-    const assignments = await res.json();
+/*=================================================
+        EDIT PROFILE - TOGGLE PROFILE WINDOW AND MORE
+====================================================*/
+const profile = document.querySelector('.profile-info');
+const overlay = document.querySelector('.overlay');
+const exitProfileWindow = document.querySelector('.close-window');
 
-}*/
+exitProfileWindow.addEventListener('click', function (e) {
+    overlay.classList.add("inactive");
+    setTimeout(() => {
+        overlay.style.display = 'none';
+    }, 400);
+})
+
+profile.addEventListener('click', function (e) {
+    overlay.style.display = 'flex';
+    overlay.classList.remove("inactive");
+})

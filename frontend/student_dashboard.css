@@ -6,13 +6,26 @@
     --green: #407940;
 }
 
-html, body{
+*{
     box-sizing: border-box;
+}
+
+html, body{
+
     margin: 0;
 }
 
 body{
     display: flex;
+}
+
+*{
+    font-family: "Josefin Sans", sans-serif;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
 }
 
 button{
@@ -47,24 +60,43 @@ button.clear-task{
 }
 
 nav{
-    width: 70px;
+    width: 80px;
     height: 100vh;
     background: var(--blue);
-    position: relative;
+    position: fixed;
+    margin:0;
+    padding: 0;
 }
 
+
+
+
 nav .icon{
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     overflow: hidden;
     border-radius: 50%;
     padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    filter:invert(1);
+}
+
+nav .icon.active{
+    filter: invert(0);
 }
 
 nav .icon img{
     width: 100%;
     height: auto;
 }
+
+@media(max-width: 800px){
+    nav{
+        display: none;
+    }
+}
+
 
 .slider-container{
     position: absolute;
@@ -84,9 +116,111 @@ nav .icon img{
     background: var(--blue);
 }
 
+.overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+}
+
+.profile-window{
+    padding: 30px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8);
+
+    margin-inline: auto;
+    background: white;
+    transition: 0.4s ease-in-out;
+}
+
+.overlay.inactive{
+    opacity: 0;
+}
+
+.profile{
+    cursor: pointer;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid black;
+    overflow: hidden;
+    margin-inline: auto;
+}
+
+.profile-image img{
+    width: 100%;
+    height: auto;
+}
+
+.profile-details{
+    margin: 20px 0;
+}
+
+.exit-methods{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.exit-methods button:nth-child(2){
+    width: 30px;
+    height: 30px;
+    background: red;
+}
+
+.logout-btn{
+    background: none;
+    color: orangered;
+    font-weight: bold;
+    border: none;
+    box-shadow: none;
+    text-align:left;
+}
+
+.edit-profile-form table{
+    width: 330px;
+    text-align: left;
+}
+
+
+.edit-profile-form table tr td{
+    padding: 8px;
+}
+
+.edit-profile-form table tr td input{
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background: #d1d0d0;
+}
+
+.update-btn{
+    width: 100%;
+    height: 40px;
+    border-radius: 12px;
+    border:none;
+    color: white;
+    background: var(--dark-blue);
+    margin: 10px 0;
+}
+
+
+
 .main-view{
     width: 100%;
     padding: 10px 5%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .container{
@@ -111,15 +245,101 @@ nav .icon img{
     height: 100%;
 }
 
+.header .profile-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
 .header .profile{
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     overflow: hidden;
 }
 
 .header .profile img{
     width: 100%;
     height: 100%;
+}
+
+.welcome{
+    font-size: 18px;
+}
+
+.table-wrapper{
+    overflow: auto;
+}
+
+@media(max-width: 800px){
+    .header > *{
+        border: 2px solid red;
+    }
+
+    .header .logo{
+        height: 70px;
+    }
+
+    .header .profile{
+        width: 70px;
+        height:70px;
+    }
+}
+
+
+/*========================TIMETABLE VIEW=============================*/
+
+.manage-modules{
+    background: var(--green);
+}
+
+.add-session{
+    background: var(--yellow);
+}
+
+.remove-session{
+    background: var(--orange);
+}
+
+.edit-session{
+    background: var(--blue);
+}
+
+
+.timetable-view{
+    display: none;
+}
+
+
+.timetable-view.selected{
+    display: block;
+}
+
+#timetable{
+    border: 2px solid var(--orange);
+}
+
+#timetable td, #timetable th {
+    border: 1px solid #ccc;
+    padding: 6px;
+}
+
+.session {
+    background-color: #cce5ff;
+    border-left: 4px solid #007bff;
+    border-radius: 4px;
+}
+
+#timetable thead{
+    background: var(--orange);
+    color: white;
+    height: 30px;
+}
+
+/*========================TASK VIEW=============================*/
+.task-view{
+    display: none;
 }
 
 .button-container{
@@ -129,12 +349,9 @@ nav .icon img{
     margin: 30px 0;
 }
 
-.task-table{
-    width: 100%;
-}
 
 .task-table thead{
-    height: 25px;
+    height: 30px;
     background: var(--dark-blue);
     color: white;
 }
